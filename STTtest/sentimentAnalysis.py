@@ -1,13 +1,17 @@
+from nrclex import NRCLex
+
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet 
+from nltk.tokenize import RegexpTokenizer
+from nltk.stem import WordNetLemmatizer
+
 import time
 
 DATE = time.strftime('%Y-%m-%d', time.localtime(time.time()))
 f = open(f'./test/{DATE}.txt', 'r')
 
 stopword = set(stopwords.words('english'))
-data = list()
-
+score = list
 
 def preprocessing(data):
 	data = data.lower()
@@ -20,13 +24,13 @@ def preprocessing(data):
 	return " ".join(words)
 
 def main():
-	lines = f.readlines()
+	#lines = f.readlines()
+	lines = ['hello', 'i\'m happy', 'i enjoy watching netflix']
+
 	for line in lines:
-		new_line = preprocessing(line)
-		data.append(new_line)
+		l = preprocessing(line)
+		score.append(NRCLex(l).top_emotions) #[('anticipation', 0.3333333333333333)]
 
-	
-
-if __init__ == '__main__':
+if __name__ == '__main__':
 	main()
 	f.close()
