@@ -21,5 +21,9 @@
 <li> PyAudio: https://medium.com/@wagnernoise/installing-pyaudio-on-macos-9a5557176c4d</li>
 <li>https://cloud.google.com/docs/authentication/getting-started</li>
 </p>
+<p>
+NRCLex: https://github.com/metalcorebear/NRCLex
+ref) https://pypi.org/project/NRCLex/
+</p>
 <li> about Postgres database: https://postgresapp.com/</li>
 <li> ref: two-scoops-of-django</li>
