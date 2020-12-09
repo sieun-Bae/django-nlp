@@ -21,6 +21,6 @@ from report.views import reportMain
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', blog.views.index, name='index'),
+    path('', blog.views.index, name='index'),
     path('reportMain/', reportMain, name='reportMain'),
 ]
