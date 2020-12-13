@@ -2,7 +2,7 @@
 <li> official style guide: python.org/dev/peps/pep-0008</li>
 <li> using flake8</li>
 <li> for url params, use _, not -</li>
-<li> database engine: PostgreSQL recommended</li>
+<li> database engine: mysql</li>
 <li> fixture actually not for dumpdata/loaddata</li>
 <li> python manage.py collectstatic</li>
 </p>
