@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
-def reportMain(request):
+def report(request):
 	return render(request, 'report.html')

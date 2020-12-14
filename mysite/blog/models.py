@@ -1,8 +1,22 @@
 from django.db import models
+#from django.conf import settings
 
-class TimeStampedModel(models.Model):
-	created = models.DateTimeField(auto_now_add = True)
-	modified = models.DateTimeField(auto_now = True)
+'''
+daily datasets
+- time when it saved
+- answer for question1
+- answer for question2
+- answer for question3
+'''
+# User = settings.AUTH_USER_MODEL
+
+class Post(models.Model):
+	# user = models.ForeignKey(User, defalult=1, null=True, on_delete=models.SET_NULL)
+	# id = models.IntegerField()
+	publish_date = models.DateTimeField(auto_now = True)
+	answer1 = models.TextField(null = True, blank=True)
+	answer2 = models.TextField(null = True, blank=True)
+	answer3 = models.TextField(null = True, blank=True)
 
 	class Meta:
-		abstract = True
+		ordering = [ "-publish_date" ]
