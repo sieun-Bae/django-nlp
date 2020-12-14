@@ -4,8 +4,6 @@ from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#print(BASE_DIR)
-
 secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
 with open(secret_file) as f:
@@ -35,7 +33,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'nlp',
     'report',
 ]
 
