@@ -17,6 +17,9 @@ class Post(models.Model):
 	answer1 = models.TextField(null = True, blank=True)
 	answer2 = models.TextField(null = True, blank=True)
 	answer3 = models.TextField(null = True, blank=True)
+	
+	def post_save(self):
+		self.save()
 
 	class Meta:
 		ordering = [ "-publish_date" ]

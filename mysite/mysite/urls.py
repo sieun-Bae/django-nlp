@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blogs_views.index, name='home'),
     path('post/', blogs_views.post, name='post'),
-    path('create/', blogs_views.create, name='create'),
+    #path('create/', blogs_views.create, name='create'),
     path('report/', report_views.report, name='report'),
     path('contact/', contact_views.contact, name='contact'),
     #path('contact/', contact_views.check_contact, name='contact')
