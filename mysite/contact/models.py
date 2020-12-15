@@ -8,6 +8,9 @@ class Contact(models.Model):
 	email = models.TextField(null = True, blank=True)
 	number = models.TextField(null = True, blank=True)
 	message = models.TextField(null = True, blank=True)
-
+	
+	def contact_save(self):
+		self.save()
+	
 	class Meta:
 		ordering = [ "-name" ]

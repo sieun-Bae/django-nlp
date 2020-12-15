@@ -11,4 +11,5 @@ urlpatterns = [
     path('create/', blogs_views.create, name='create'),
     path('report/', report_views.report, name='report'),
     path('contact/', contact_views.contact, name='contact'),
+    #path('contact/', contact_views.check_contact, name='contact')
 ]
