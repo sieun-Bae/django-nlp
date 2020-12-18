@@ -5,4 +5,3 @@ class PostForm(forms.ModelForm):
 	class Meta:
 		model = Post
 		fields = ('answer1', 'answer2', 'answer3')
-		

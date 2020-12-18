@@ -1,40 +1,42 @@
 {% extends "base.html" %}  
 {% block content %}
   <!-- Post Content -->
-  <article>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <p>
           <h2 class="section-heading">Record your mood.</h2></p>
-          <form name="Q1" id="contactForm" method="post" novalidate>
+          <form name="Q1" id="postForm" method="post" novalidate>
           {% csrf_token %}
           <div class="control-group">
-            <p>
             <div class="form-group floating-label-form-group controls">
+              <p>
               <h3>How was your day today?</h3>
               <label>Answer</label>
-              <input type="text" class="form-control" id="name" required data-validation-required-message="Please answer to this question.">
+              <input type="text" class="form-control" placeholder="Answer" id="answer" required data-validation-required-message="Please answer to this question." name="answer1">
               <p class="help-block text-danger"></p>
-            </div></p>
+              </p>
+            </div>
           </div>
           <div class="control-group">
-            <p>
             <div class="form-group floating-label-form-group controls">
+              <p>
               <h3>Can you talk about it in more detail?</h3>
               <label>Answer</label>
-              <input type="text" class="form-control" id="name" required data-validation-required-message="Please answer to this question.">
+              <input type="text" class="form-control" placeholder="Answer" id="answer" required data-validation-required-message="Please answer to this question." name="answer2">
               <p class="help-block text-danger"></p>
-            </div></p>
+              </p>
+            </div>
           </div>
           <div class="control-group">
-            <p>
             <div class="form-group col-xs-12 floating-label-form-group controls">
+              <p>
               <h3>Is there anything you want to talk about? Feel free to talk.</h3>
               <label>Answer</label>
-              <input type="text" class="form-control" id="name" required data-validation-required-message="Please answer to this question.">
+              <input type="text" class="form-control" placeholder="Answer" id="answer" required data-validation-required-message="Please answer to this question." name="answer3">
               <p class="help-block text-danger"></p>
-          </div></p>
+              </p>
+          </div>
           <br>
           <div style="text-align:center;" id="success">
           <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
@@ -50,7 +52,6 @@
         </div>
       </div>
     </div>
-  </article>
 
   <hr>
   <!-- Bootstrap core JavaScript -->

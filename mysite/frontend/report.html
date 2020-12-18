@@ -2,9 +2,31 @@
 {% block content %}
   <!-- Main Content -->
   <div id="chart"></div>
-  {% autoescape off %}
-  {{ plot_div }}
-  {% endautoescape %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="control-group">
+        <p>
+        <h3>Daily Mood</h3>
+        {% autoescape off %}
+        {{ daily_plot_div }}
+        {% endautoescape %}</p>
+        </div>
+        <div class="control-group">
+        <p>
+        <h3>Weekly Mood</h3>
+        {% autoescape off %}
+        {% endautoescape %}</p>
+        </div>
+        <div class="control-group">
+        <p>
+        <h3>Frequently used words</h3>
+        <img src="{{ wordcloud }}"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
   <!-- Bootstrap core JavaScript -->
   <script src="../static/vendor/jquery/jquery.min.js"></script>
   <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
