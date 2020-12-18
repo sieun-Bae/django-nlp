@@ -51,7 +51,7 @@ def daily_pie():
 	
 	labels = list(emotion.keys())
 	values = list(emotion.values())
-	plot_div = plot([Pie(labels = labels, values = values, showlegend = True, automargin = True, opacity=0.8, title='Daily Mood')], output_type='div')
+	plot_div = plot([Pie(labels = labels, values = values, showlegend = True, automargin = True, opacity=0.8)], output_type='div')
 	
 	return plot_div
 
