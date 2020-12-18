@@ -1,4 +1,7 @@
 Django==1.8.0
 psycopg2==2.6
 djangorestframework==3.1.1
-wordcloud //conda install -c conda-forge wordcloud
+wordcloud //conda install -c conda-forge
+djangorestframework //pip3 install djangorestframework
+plotly //pip3 install plotly
+pandas

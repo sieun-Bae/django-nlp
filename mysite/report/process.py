@@ -13,7 +13,7 @@ from nltk.stem import WordNetLemmatizer
 #f = open(f'./test/{DATE}.txt', 'r')
 
 stopword = set(stopwords.words('english'))
-score = list
+score = list()
 
 def preprocessing(data):
 	data = data.lower()
@@ -26,11 +26,8 @@ def preprocessing(data):
 	return " ".join(words)
 
 def processing(data):
-	lines = data
-
-	for line in lines:
-		l = preprocessing(line)
-		score.append(NRCLex(l).top_emotions) #[('anticipation', 0.3333333333333333)]
+	l = preprocessing(data)
+	return NRCLex(l).raw_emotion_scores #[('anticipation', 0.3333333333333333)]
 
 # python3 NRCLex.py data
 if __name__ == '__main__':

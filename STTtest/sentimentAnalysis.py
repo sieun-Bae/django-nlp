@@ -8,10 +8,10 @@ from nltk.stem import WordNetLemmatizer
 import time
 
 DATE = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-f = open(f'./test/{DATE}.txt', 'r')
+#f = open(f'./test/{DATE}.txt', 'r')
 
 stopword = set(stopwords.words('english'))
-score = list
+score = list()
 
 def preprocessing(data):
 	data = data.lower()
@@ -29,8 +29,9 @@ def main():
 
 	for line in lines:
 		l = preprocessing(line)
-		score.append(NRCLex(l).top_emotions) #[('anticipation', 0.3333333333333333)]
-
+		score.append(NRCLex(l).raw_emotion_scores) #[('anticipation', 0.3333333333333333)]
+	print(score)
+	return score
 if __name__ == '__main__':
 	main()
-	f.close()
+	#f.close()
