@@ -13,7 +13,9 @@
               <p>
               <h3>How was your day today?</h3>
               <label>Answer</label>
-              <input type="text" class="form-control" placeholder="Answer" id="answer" required data-validation-required-message="Please answer to this question." name="answer1">
+              <input type="text" class="form-control" placeholder="Answer" id="answer1" required data-validation-required-message="Please answer to this question." name="answer1">
+              <button onclick="stt_start1();" type="button"class="btn">Start</button>
+              <button onclick="stt_end1();" type="button" class="btn">End</button>
               <p class="help-block text-danger"></p>
               </p>
             </div>
@@ -23,7 +25,9 @@
               <p>
               <h3>Can you talk about it in more detail?</h3>
               <label>Answer</label>
-              <input type="text" class="form-control" placeholder="Answer" id="answer" required data-validation-required-message="Please answer to this question." name="answer2">
+              <input type="text" class="form-control" placeholder="Answer" id="answer2" required data-validation-required-message="Please answer to this question." name="answer2">
+              <button onclick="stt_start2();" type="button"class="btn">Start</button>
+              <button onclick="stt_end2();" type="button" class="btn">End</button>
               <p class="help-block text-danger"></p>
               </p>
             </div>
@@ -33,7 +37,9 @@
               <p>
               <h3>Is there anything you want to talk about? Feel free to talk.</h3>
               <label>Answer</label>
-              <input type="text" class="form-control" placeholder="Answer" id="answer" required data-validation-required-message="Please answer to this question." name="answer3">
+              <input type="text" class="form-control" placeholder="Answer" id="answer3" required data-validation-required-message="Please answer to this question." name="answer3">
+              <button onclick="stt_start3();" type="button"class="btn">Start</button>
+              <button onclick="stt_end3();" type="button" class="btn">End</button>
               <p class="help-block text-danger"></p>
               </p>
           </div>
@@ -57,7 +63,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="../static/vendor/jquery/jquery.min.js"></script>
   <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <script src="../static/js/bae.js"></script>
   <!-- Custom scripts for this template -->
   <script src="../static/js/clean-blog.min.js"></script>
 {% endblock content %}

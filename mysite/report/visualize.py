@@ -1,6 +1,6 @@
 #https://medium.com/@shistory02/django-db-data%EB%A1%9C-matplotlib-plot-render%ED%95%98%EA%B8%B0-861a8e8fb93a
 import os
-import time
+import datetime
 
 import numpy as np 
 import pandas as pd 
@@ -19,55 +19,58 @@ from blog.models import Post
 
 from . import process as nlp
 
-DATE = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+DATE = datetime.datetime.now()-datetime.timedelta(weeks=1)
 directory = f"./static/img/"
 
 def weekly_bar():
-	#weekly_post = list(Post.objects.all().values)
-	posts = Post.objects.values()
-	datas = dict()
+	global DATE
+
+	posts = Post.objects.values()[:7]
+	datas = dict() #key: emotion, value: [ daily emotion ]
 	emotions = dict() #key: publish_date, value: score of emotions of answer1,2,3
+	
 	for post in posts:
 		emotion = dict()
-		print('*'+post['answer1'])
 		temp = nlp.processing(str(post['answer1']) + str(post['answer2']) + str(post['answer3']))
 		for k,v in temp.items():
 			emotion[k] = emotion.get(k,0)+v
 		emotions[post['publish_date']] = emotion
-	print(emotions)
-
-	for emotion in emotions.values():
-		emotion.keys()
-
-	fig = make_subplots(rows=5, cols=1)
-
-	#for emotion in range(1,5):
-		#fig.add_trace(go.Bar(x=labels, y=list(emotions[emotion])))
-	plot_div = plot(fig, output_type='div')
-	'''
-	if not os.path.exists(directory):
-		os.makedirs(directory)
 	
-	plt.savefig(directory+'weekly_line.png')
+	for i, emotion in enumerate(emotions.values()):
+		for k, v in emotion.items():
+			if k not in datas.keys():
+				datas[k] = [0]*7
+			datas[k][i] = v
+
+	labels=list()
+	for i in range(7):
+		labels.append((DATE+datetime.timedelta(days=i)).strftime('%Y-%m-%d'))
+		'''
+	fig = make_subplots(rows=len(datas.keys()), cols=1,
+		subplot_titles=list(datas.keys()), shared_xaxes=True)
+
+	enum = [i for i in range(1,8)]
+	for i, k in enumerate(datas.keys()):
+		fig.add_trace(go.Bar(x=labels, y=datas[k]), row=enum[i], col=1)
 	'''
+	data=list()
+	for k,v in datas.items():
+		data.append(go.Bar(name=k, x=labels, y=v))
+	fig = go.Figure(data=data)
+	fig.update_layout(barmode='stack', paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+	#fig.update_layout(height=800, width=600, autosize = True, showlegend=False,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+	plot_div = plot(fig, output_type='div')
 	return plot_div
-
-#def monthly_line(request):
-
-#def monthly_pie(request):
-
-
 
 def daily_pie():
 	emotion = dict()
 
-	#daily_post = list(Post.objects.last().values)
-	daily_post = ['', 'hi', 'enjoy watching netflix', 'I\'m happy']
-	for data in daily_post[1:]:
-		temp = nlp.processing(data)
-		for k,v in temp.items():
-			emotion[k] = emotion.get(k,0)+v
-	
+	post = Post.objects.values()[0]
+	#daily_post = ['', 'hi', 'enjoy watching netflix', 'I\'m happy']
+	temp = nlp.processing(str(post['answer1']) + str(post['answer2']) + str(post['answer3']))
+	for k,v in temp.items():
+		emotion[k] = emotion.get(k,0)+v	
+
 	labels = list(emotion.keys())
 	values = list(emotion.values())
 	plot_div = plot([go.Pie(labels = labels, values = values, showlegend = True, automargin = True, opacity=0.8)], output_type='div')
