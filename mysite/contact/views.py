@@ -24,7 +24,7 @@ def contact(request):
 		if form.is_valid():
 			contact = form.save(commit=False)
 			contact.contact_save()
-			message = "전송이 완료되었습니다."
+			message = "Message is successfully sent."
 			return render(request, template, {"message":message})
 	else:
 		template = 'contact.html'

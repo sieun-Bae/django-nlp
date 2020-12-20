@@ -5,47 +5,25 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <p>
-          <h2 class="section-heading">Record your mood.</h2></p>
-          <form name="Q1" id="postForm" method="post" novalidate>
+          <h2 class="post-title">Record your mood.</h2></p>
+          <form id="postForm" method="post" novalidate>
           {% csrf_token %}
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
-              <p>
-              <h3>How was your day today?</h3>
+              <h3>Write/Record your diary for today.<br></h3>
+              <h5>What was happened, and what you felt in details?<br>
+              Feel free to share your thoughts, and events.</h5>
               <label>Answer</label>
-              <input type="text" class="form-control" placeholder="Answer" id="answer1" required data-validation-required-message="Please answer to this question." name="answer1">
-              <button onclick="stt_start1();" type="button"class="btn">Start</button>
-              <button onclick="stt_end1();" type="button" class="btn">End</button>
+              <textarea id="answer" rows="15" type="text" class="form-control" placeholder="Answer" required data-validation-required-message="Please answer to this question." name="answer"></textarea>
+
+              <button style="float:right" onclick="stt_end();" type="button" class="btn">End</button> 
+              <button style="float:right" onclick="stt_start();" type="button" class="btn">Start</button><br><br><br>
               <p class="help-block text-danger"></p>
-              </p>
             </div>
           </div>
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <p>
-              <h3>Can you talk about it in more detail?</h3>
-              <label>Answer</label>
-              <input type="text" class="form-control" placeholder="Answer" id="answer2" required data-validation-required-message="Please answer to this question." name="answer2">
-              <button onclick="stt_start2();" type="button"class="btn">Start</button>
-              <button onclick="stt_end2();" type="button" class="btn">End</button>
-              <p class="help-block text-danger"></p>
-              </p>
-            </div>
-          </div>
-          <div class="control-group">
-            <div class="form-group col-xs-12 floating-label-form-group controls">
-              <p>
-              <h3>Is there anything you want to talk about? Feel free to talk.</h3>
-              <label>Answer</label>
-              <input type="text" class="form-control" placeholder="Answer" id="answer3" required data-validation-required-message="Please answer to this question." name="answer3">
-              <button onclick="stt_start3();" type="button"class="btn">Start</button>
-              <button onclick="stt_end3();" type="button" class="btn">End</button>
-              <p class="help-block text-danger"></p>
-              </p>
-          </div>
-          <br>
+          <br><br>
           <div style="text-align:center;" id="success">
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button><br>
           </div>
           </form>
           
@@ -63,7 +41,40 @@
   <!-- Bootstrap core JavaScript -->
   <script src="../static/vendor/jquery/jquery.min.js"></script>
   <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../static/js/bae.js"></script>
+  <script>
+    const speechRecognition = window.webkitSpeechRecognition
+    const recognition = new speechRecognition();
+    const textBox = $("#answer");
+    const instruction = $("#instruction");
+
+    let content = '';
+
+    recognition.continuous = true;
+
+    recognition.onspeechend = () => {
+        console.log("Speech End");
+        recognition.start();
+    }
+
+    recognition.onerror = () => {
+        console.log("On Error");
+        recognition.start();
+    }
+
+    recognition.onresult = (event) => {
+        const current = event.resultIndex;
+        const transScript = event.results[current][0].transcript;
+        content += transScript;
+        textBox.val(content);
+    }
+
+    stt_start = () => {
+      recognition.start();
+  }
+    stt_end = () => {
+      recognition.stop();
+    }
+  </script>
   <!-- Custom scripts for this template -->
   <script src="../static/js/clean-blog.min.js"></script>
 {% endblock content %}

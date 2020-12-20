@@ -31,7 +31,7 @@ def weekly_bar():
 	
 	for post in posts:
 		emotion = dict()
-		temp = nlp.processing(str(post['answer1']) + str(post['answer2']) + str(post['answer3']))
+		temp = nlp.processing(str(post['answer']))
 		for k,v in temp.items():
 			emotion[k] = emotion.get(k,0)+v
 		emotions[post['publish_date']] = emotion
@@ -67,7 +67,7 @@ def daily_pie():
 
 	post = Post.objects.values()[0]
 	#daily_post = ['', 'hi', 'enjoy watching netflix', 'I\'m happy']
-	temp = nlp.processing(str(post['answer1']) + str(post['answer2']) + str(post['answer3']))
+	temp = nlp.processing(str(post['answer']))
 	for k,v in temp.items():
 		emotion[k] = emotion.get(k,0)+v	
 
@@ -82,7 +82,7 @@ def wordcloud():
 	posts = Post.objects.values()
 	words = str()
 	for post in posts:
-		temp = nlp.preprocessing(str(post['answer1']) + str(post['answer2']) + str(post['answer3']))
+		temp = nlp.preprocessing(str(post['answer']))
 		words += temp
 	wordcloud = WordCloud(mask = mask, background_color = 'white', max_font_size = 60, width=400, height=400).generate(words) #mask option should be added
 	img=BytesIO()
