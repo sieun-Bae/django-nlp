@@ -78,7 +78,7 @@ def daily_pie():
 	return plot_div
 
 def wordcloud():
-	mask = np.array(Image.open(directory+'alice.png'))
+	mask = np.array(Image.open(directory+'mask.png'))
 	posts = Post.objects.values()
 	words = str()
 	for post in posts:

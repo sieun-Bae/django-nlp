@@ -27,3 +27,25 @@ ref) https://pypi.org/project/NRCLex/
 </p>
 <li> about Postgres database: https://postgresapp.com/</li>
 <li> ref: two-scoops-of-django</li>
+
+<p>배포</p>
+<li>https://nerogarret.tistory.com/47?category=800142</li>
+<li>Install all the requirements in venv</li>
+<li>DB: https://minwoo2815.tistory.com/64</li>
+<li>
+https://blog.boxcorea.com/wp/archives/2702
+sudo apt-get install python3-dev
+python3 import nltk 
+nltk.download('stopwords')
+nltk.download('wordnet')</li>
+<li>
+https://stackoverflow.com/questions/46619039/django-db-utils-operationalerror-1045-access-denied-for-user-rootlocalho/46619093
+flush privileges;
+</li>
+<li>
+	migrate
+</li>
+<li>python3 -m textblob.download_corpora</li>
+<li>home/ubuntu/nltk-data
+https://stackoverflow.com/questions/35861482/nltk-lookup-error</li>
+mv nltk_data to django-nlp
